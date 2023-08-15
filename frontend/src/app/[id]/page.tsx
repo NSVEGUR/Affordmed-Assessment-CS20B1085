@@ -8,9 +8,12 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const train = await getTrain(id);
   return (
-    <main class="absolute flex items-center justify-center w-full h-full p-10">
-      <div class=" p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <main class="absolute flex flex-col items-center justify-center w-full h-full p-10">
+      <h1 class="font-mono mb-2 border border-black bg-gray-100 p-1">
+        Train Details
+      </h1>
+      <div class=" p-6">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           {train.trainName}
         </h5>
         <p>Number: {train.trainNumber}</p>

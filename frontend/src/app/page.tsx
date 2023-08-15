@@ -9,65 +9,38 @@ const getTrains = async () => {
 export default async function Home() {
   const trains = await getTrains();
   return (
-    <main class="p-10">
-      <h1 class="text-center mb-5">
-        Train Central By Ravindar Guguloth (CS20B1085)
+    <main class="p-10 bg-white">
+      <h1 class="text-center mb-5 font-mono font-bold text-lg bg-gray-100 border p-1 border-black">
+        Affordmed - Train Central Assignment
       </h1>
-      <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" class="px-6 py-3">
-                Train Name
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Train Number
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Departure Time
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Seats Available
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Price
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Delayed By
-              </th>
-              <th scope="col" class="px-6 py-3">
-                More
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {trains.map((train, index) => {
-              return (
-                <tr class="bg-white dark:bg-gray-800" key={index}>
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {train.trainName}
-                  </th>
-                  <td class="px-6 py-4">{train.trainNumber}</td>
-                  <td class="px-6 py-4">{`${train.departureTime.Hours}:${train.departureTime.Minutes}:${train.departureTime.Seconds}`}</td>
-                  <td class="px-6 py-4">{`Sleeper: ${train.seatsAvailable.sleeper}, AC: ${train.seatsAvailable.AC}`}</td>
-                  <td class="px-6 py-4">{`Sleeper: ${train.price.sleeper}, AC: ${train.price.AC}`}</td>
-                  <td class="px-6 py-4">{train.delayedBy}</td>
-                  <th scope="col" class="px-6 py-3">
-                    <a
-                      href={`/${train.trainNumber}`}
-                      class="p-1 bg-blue-500 rounded-md font-normal text-white"
-                    >
-                      View
-                    </a>
-                  </th>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div class="relative flex flex-wrap gap-5 items-center justify-center">
+        {trains.map((train, index) => {
+          return (
+            <a
+              class=" p-6 h-64 w-72 bg-gray-200 border border-gray-200 rounded-lg shadow hover:bg-gray-100 "
+              key={index}
+              href={`/${train.trainNumber}`}
+            >
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                {train.trainName}
+              </h5>
+              <p>Number: {train.trainNumber}</p>
+              <p>
+                Departure Time:{" "}
+                {`${train.departureTime.Hours}:${train.departureTime.Minutes}:${train.departureTime.Seconds}`}
+              </p>
+              <p>
+                Seats Available:{" "}
+                {`Sleeper: ${train.seatsAvailable.sleeper}, AC: ${train.seatsAvailable.AC}`}
+              </p>
+              <p>
+                Price:{" "}
+                {`Sleeper: ${train.price.sleeper}, AC: ${train.price.AC}`}
+              </p>
+              <p>Delayed By: {train.delayedBy}</p>
+            </a>
+          );
+        })}
       </div>
     </main>
   );

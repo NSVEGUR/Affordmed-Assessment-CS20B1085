@@ -18,11 +18,11 @@ const getToken = async () => {
     method: "POST",
     body: JSON.stringify({
       companyName: "Train Central",
-      clientID: "ef1aeaca-ad08-468e-b123-59f766ae51b3",
-      clientSecret: "AfGRvFobIImUyULf",
-      ownerName: "Ravindar Gugulothu",
-      ownerEmail: "cs20b1085@iiitdm.ac.in",
-      rollNo: "cs20b1085",
+      clientID: "defc21ae-fd68-4bb6-9d0b-2bba4aec0487",
+      clientSecret: "LdoyTYMTnKgduIwu",
+      ownerName: "Harshtih",
+      ownerEmail: "cs20b1123@iiitdm.ac.in",
+      rollNo: "cs20b1123",
     }),
   });
   const result = await response.json();
